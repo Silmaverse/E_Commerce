@@ -1,1 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* -----banner slider------- */
+
+
+.banner_slider{
+    position: relative;
+}
+
+.banner_slider .slick-dots{
+    display: flex !important;
+    gap:12px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 24px;
+}
+
+
+.banner_slider .slick-dots li button{
+    font-size: 0;
+    width:8px;
+    height: 8px;
+    border:1px solid #111827;
+    border-radius: 50%;
+}
+
+.banner_slider .slick-dots .slick-active button{
+   background-color: #111827;
+}
+
+
+/* ------------slider 2 design */
+
+
+
+.exploring .slick-dots{
+    display: flex !important;
+    justify-content: center;
+    gap:12px;
+ 
+}
+
+
+.exploring  .slick-dots li button{
+    font-size: 0;
+    width:8px;
+    height: 8px;
+    background: lab(8.32% 1.95 -10.51 / 0.549);
+    margin-top: 40px;
+    border-radius: 50%;
+}
+
+.exploring .slick-dots .slick-active button{
+   background-color: #111827;
+}

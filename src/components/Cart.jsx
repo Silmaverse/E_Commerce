@@ -6,7 +6,7 @@ import { IoIosClose } from "react-icons/io";
 const Cart = ({isOpen ,closCart}) => {
   return (
     <>
-    <section className ={`absolute top-0 right-0 ${isOpen? "w-full h-screen ":"w-0 h-0"} duration-[1s] `}>
+    <section className ={`absolute top-0 right-0 ${isOpen? "w-full h-screen ":"w-0 h-0"} duration-[1s] z-[2]`}>
 
         <div  onClick={closCart} className= {` bg-[#0000001c] ${isOpen ? "w-full h-screen":""} duration-[2s]`}></div>
 

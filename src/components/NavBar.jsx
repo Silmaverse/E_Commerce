@@ -13,7 +13,7 @@ const NavBar = () => {
 
   return (
     <>
-    <nav id='navbar' className='py-[27px] '>
+    <nav id='navbar' className='py-[27px] z-[1]'>
           <div className="container">
 
             <div className="flex justify-between items-center">
