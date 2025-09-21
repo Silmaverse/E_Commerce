@@ -1,5 +1,6 @@
 import React from 'react'
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
 import CommonProductCard from './commoncomponent/CommonProductCard'
 import CommonHead from './commoncomponent/CommonHead';
 

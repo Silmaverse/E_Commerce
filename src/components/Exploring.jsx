@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { IoIosArrowRoundForward } from "react-icons/io";
 import CommonHead from './commoncomponent/CommonHead'
+import "slick-carousel/slick/slick.css";
 import Slider from "react-slick";
 
 const Exploring = () => {
