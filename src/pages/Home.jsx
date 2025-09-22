@@ -3,6 +3,9 @@ import Banner from '../components/Banner'
 import Services from '../components/Services'
 import Exploring from '../components/Exploring'
 import Recommendation from '../components/Recommendation'
+import Sellers from '../components/Sellers'
+import Original from '../components/Original'
+import Footer from '../components/Footer'
 
 
 const Home = () => {
@@ -12,6 +15,9 @@ const Home = () => {
     <Services/>
     <Exploring/>
     <Recommendation/>
+    <Sellers/>
+    <Original/>
+    <Footer/>
     </>
   )
 }

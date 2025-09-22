@@ -1,45 +1,65 @@
-import React from 'react'
-import Slider from "react-slick";
+import React, { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
-import CommonProductCard from './commoncomponent/CommonProductCard'
-import CommonHead from './commoncomponent/CommonHead';
+import CommonProductCard from "./commoncomponent/CommonProductCard";
+import CommonHead from "./commoncomponent/CommonHead";
+import axios from "axios";
+import Slider from "react-slick";
 
 const Recommendation = () => {
-     const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        arrows:false,
-    };
+  const [allProducts, setAllProducts] = useState([]);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 2,
+    arrows: false,
+  };
+
+  useEffect(() => {
+    axios
+      .get("https://dummyjson.com/products")
+      .then((res) => {
+        setAllProducts(res.data.products);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  console.log(allProducts);
+
   return (
     <>
-    <section className='exploring mt-[176px]'>
-      
-        <div className="container">
-            <CommonHead commonContent1={"Recommendations. "} commonContent2={"Best matching products for you"} />
-             <div className="mt-10">
-
-                    <Slider {...settings}>
-                                
-                                
-                  <CommonProductCard/>
-                 <CommonProductCard/>
-                 <CommonProductCard/>
-                <CommonProductCard/>
-                  <CommonProductCard/>
-                                
-                        
-                    </Slider> 
-              </div>
-
-                  
-            </div>
-        
-    </section>
+      <section className="mt-[176px]">
+        <div className="container exploring px-6">
+          <CommonHead
+            commonContent1={" Recommendations. "}
+            commonContent2={"Best matching products for you"}
+          />
+          <div className="mt-10">
+            <Slider {...settings}>
+              {allProducts.map((item) => (
+                <div>
+                  <CommonProductCard
+                    key={item.id}
+                    productImage={item.thumbnail}
+                    productTitle={item.title}
+                    productPrice={item.price}
+                    productCategory={item.category}
+                    productDisCountPrice={item.discountPercentage}
+                    productRating={item.rating}
+                    productStock={item.stock}
+                  />
+                </div>
+              ))}
+            </Slider>
+          </div>
+        </div>
+      </section>
     </>
-  )
-}
+  );
+};
 
-export default Recommendation
+export default Recommendation;
