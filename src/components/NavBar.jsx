@@ -30,22 +30,23 @@ const NavBar = () => {
 
                 <div className="flex items-center gap-[22px]">
                     <Link to={'/'}>
-                        <RiUserLine className='text-2xl text-[#4B5563]'/>
+                        <RiUserLine className='text-3xl text-[#4B5563]'/>
                     </Link>
                     <button onClick={()=>setShowCart(true)} className='relative '>
                         <PiShoppingCartSimpleLight  className='text-3xl text-[#4B5563] '/>
                         <div className="text-[12px] text-[#FFFFFF] w-[20px] h-[20px]
-                         bg-[#0EA5E9] rounded-full font-popins font-medium flex justify-center items-center absolute top-[-8px] right-[-3px]">3</div>
+                         bg-[#0EA5E9] rounded-full font-popins font-medium flex justify-center items-center absolute top-[-6px] right-[-4px]">3</div>
                     </button>
 
                 </div>
 
             </div>
+             
 
           </div>
           {
           
-              <Cart isOpen={showCart}  closCart={()=>setShowCart(false)}/>
+              <Cart isOpen={showCart}  closeCart={()=>setShowCart(false)}/>
           }
     </nav>
     </>

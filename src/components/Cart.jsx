@@ -1,22 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router'
 import { IoIosClose } from "react-icons/io";
 
 
-const Cart = ({isOpen ,closCart}) => {
+const Cart = ({isOpen ,closeCart}) => {
+
+  useEffect(()=>{
+     document.body.style.overflow = isOpen?"hidden":"auto"
+  },[isOpen])
+
   return (
     <>
-    <section className ={`absolute top-0 right-0 ${isOpen? "w-full h-screen ":"w-0 h-0"} duration-[1s] z-[2]`}>
+    <section className ={`w-full h-screen fixed overflow-hidden  top-0 right-0 ${isOpen? "pointer-events-auto opacity-100":"pointer-events-none opacity-0"} duration-[1s] z-[9999]`}>
 
-        <div  onClick={closCart} className= {` bg-[#0000001c] ${isOpen ? "w-full h-screen":""} duration-[2s]`}></div>
+        <div  onClick={closeCart} className= {` w-full h-screen   right-0 top-0 bg-[#f0e8e825] ${isOpen ? "translate-x-0":" translate-x-full"} duration-[1s]`}></div>
 
-        <div className={` bg-[#fff] overflow-y-scroll not-last:not-[]:bg-[#ffff] absolute top-0 right-0 
-           ${isOpen ? "w-[400px] h-[700px] scale-100": "scale-0" } duration-[.4s]  p-5`}>
+        <div className={`w-[400px] h-screen  bg-[#fff] overflow-y-scroll not-last:not-[]:bg-[#ffff] absolute top-0 right-0 
+           ${isOpen ? "translate-x-0": "translate-x-full" }  transition-transform duration-[1s] ease-in-out  p-5`}>
 
             <div className="flex justify-between items-center">
 
               <h2 className='text-xl text-[#000] font-popins font-medium'>Cart</h2>
-              <IoIosClose className='text-3xl text-[#4B5563]' onClick={closCart}/>
+              <IoIosClose className='text-3xl text-[#4B5563]' onClick={closeCart}/>
             </div>
 
 
@@ -137,7 +142,7 @@ const Cart = ({isOpen ,closCart}) => {
                 <p className='text-[14px] font-medium font-popins' >$350</p>
             </div>
 
-           <Link onClick={closCart} to={'/checkout'} className='inline-block w-full py-[14px] bg-[#111827] rounded-[9999px] 
+           <Link onClick={closeCart} to={'/checkout'} className='inline-block w-full py-[14px] bg-[#111827] rounded-[9999px] 
             text-[#FFFFFF] text-base font-popins font-medium text-center active:scale-[1.1]  duration-150'>CheckOut</Link>
 
         </div>
