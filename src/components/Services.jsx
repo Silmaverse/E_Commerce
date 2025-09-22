@@ -12,7 +12,7 @@ const Services = () => {
     <>
 
      <section id='services'>
-        <div className="container px-6">
+        <div className="container ">
             <div className="border border-[#E5E7EB] py-6 px-10 rounded-2xl mt-[52px] flex justify-between flex-wrap">
                 {/* ------single services ---- */}
                 <div className="w-[303px] border-r border-[#E5E7EB]  h-[50px] flex gap-[16px] items-center">

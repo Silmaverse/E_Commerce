@@ -18,7 +18,7 @@ const Exploring = () => {
   return (
     <>
       <section id="commonhaed" className="exploring mt-[120px] ">
-        <div className="container px-6">
+        <div className="container ">
           <CommonHead
             commonContent1={"Start exploring. "}
             commonContent2={"Good things are waiting for you"}

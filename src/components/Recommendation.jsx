@@ -28,12 +28,11 @@ const Recommendation = () => {
       });
   }, []);
 
-  console.log(allProducts);
-
+  
   return (
     <>
       <section className="mt-[176px]">
-        <div className="container exploring px-6">
+        <div className="container exploring ">
           <CommonHead
             commonContent1={" Recommendations. "}
             commonContent2={"Best matching products for you"}

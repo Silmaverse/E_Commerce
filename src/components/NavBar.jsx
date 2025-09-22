@@ -14,7 +14,7 @@ const NavBar = () => {
   return (
     <>
     <nav id='navbar' className='py-[27px] z-[1]'>
-          <div className="container px-4">
+          <div className="container ">
 
             <div className="flex justify-between items-center">
 
@@ -32,10 +32,10 @@ const NavBar = () => {
                     <Link to={'/'}>
                         <RiUserLine className='text-2xl text-[#4B5563]'/>
                     </Link>
-                    <button onClick={()=>setShowCart(true)} className='relative'>
-                        <PiShoppingCartSimpleLight  className='text-2xl text-[#4B5563] '/>
+                    <button onClick={()=>setShowCart(true)} className='relative '>
+                        <PiShoppingCartSimpleLight  className='text-3xl text-[#4B5563] '/>
                         <div className="text-[12px] text-[#FFFFFF] w-[20px] h-[20px]
-                         bg-[#0EA5E9] rounded-full font-popins font-medium flex justify-center items-center absolute top-[-10px] left-[10px]">3</div>
+                         bg-[#0EA5E9] rounded-full font-popins font-medium flex justify-center items-center absolute top-[-8px] right-[-3px]">3</div>
                     </button>
 
                 </div>
