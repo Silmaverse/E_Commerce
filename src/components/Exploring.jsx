@@ -13,12 +13,39 @@ const Exploring = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     arrows: false,
+   responsive: [
+      {
+        breakpoint: 1023,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 639,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+    
   };
 
   return (
     <>
       <section id="commonhaed" className="exploring mt-[120px] ">
-        <div className="container ">
+        <div className="container px-6 lg:px-[50px] ">
           <CommonHead
             commonContent1={"Start exploring. "}
             commonContent2={"Good things are waiting for you"}
@@ -29,19 +56,19 @@ const Exploring = () => {
          
                 {/* ------single card */}
                 <div>
-                  <div className="w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex  justify-between items-center mt-6">
+                  <div className="w-[312px] lg:w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
                     <div className="">
-                      <h2 className="text-[24px] text-[#111827] font-popins font-semibold">
+                      <h2 className="text-[20px] lg:text-[24px] text-[#111827] font-popins font-semibold">
                         For Men's
                       </h2>
-                      <p className="text-[14px] font-popins font-normal">
+                      <p className="text-[12px] lg:text-[14px] font-popins font-normal text-[#4B5563]">
                         Starting at $24
                       </p>
                     </div>
 
                     <Link
                       to={"/"}
-                      className="text-[14px] font-popins font-medium border-l-3 border-[#E5E7EB] 
+                      className="text-[12px] lg:text-[14px] font-popins font-medium border-l-3 border-[#E5E7EB] 
                       text-[#4B5563] pl-3 flex items-center gap-2"
                       >
                       Shop Now{" "}
@@ -53,19 +80,19 @@ const Exploring = () => {
 
                 {/* ------single card */}
                 <div>
-                  <div className="w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
+                  <div className="w-[312px] lg:w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
                     <div className="">
-                      <h2 className="text-[24px] text-[#111827] font-popins font-semibold">
+                      <h2 className="text-[20px] lg:text-[24px] text-[#111827] font-popins font-semibold">
                         For Men's
                       </h2>
-                      <p className="text-[14px] font-popins font-normal">
+                      <p className="text-[12px] lg:text-[14px] font-popins font-normal">
                         Starting at $24
                       </p>
                     </div>
 
                     <Link
                       to={"/"}
-                      className="text-[14px] font-popins font-medium border-l-3 border-[#E5E7EB] 
+                      className="text-[12px] lg:text-[14px] font-popins font-medium border-l-3 border-[#E5E7EB] 
                         text-[#4B5563] pl-3 flex items-center gap-2"
                     >
                       Shop Now{" "}
@@ -76,19 +103,19 @@ const Exploring = () => {
           
                 {/* ------single card */}
                 <div>
-                  <div className="w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
+                  <div className="w-[312px] lg:w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
                     <div className="">
-                      <h2 className="text-[24px] text-[#111827] font-popins font-semibold">
+                      <h2 className="text-[20px] lg:text-[24px] text-[#111827] font-popins font-semibold">
                         For Men's
                       </h2>
-                      <p className="text-[14px] font-popins font-normal">
+                      <p className="text-[12px] lg:text-[14px] font-popins font-normal">
                         Starting at $24
                       </p>
                     </div>
 
                     <Link
                       to={"/"}
-                      className="text-[14px] font-popins font-medium border-l-3 border-[#E5E7EB] 
+                      className="text-[12px] lg:text-[14px] font-popins font-medium border-l-3 border-[#E5E7EB] 
                         text-[#4B5563] pl-3 flex items-center gap-2"
                     >
                       Shop Now{" "}
@@ -100,19 +127,19 @@ const Exploring = () => {
 
                 {/* ------single card */}
                 <div>
-                  <div className="w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
+                  <div className="w-[312px] lg:w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
                     <div className="">
-                      <h2 className="text-[24px] text-[#111827] font-popins font-semibold">
+                      <h2 className="text-[20px] lg:text-[24px] text-[#111827] font-popins font-semibold">
                         For Men's
                       </h2>
-                      <p className="text-[14px] font-popins font-normal">
+                      <p className="text-[12px] lg:text-[14px] font-popins font-normal">
                         Starting at $24
                       </p>
                     </div>
 
                     <Link
                       to={"/"}
-                      className="text-[14px] font-popins font-medium border-l-3 border-[#E5E7EB] 
+                      className="text-[12px] lg:text-[14px] font-popins font-medium border-l-3 border-[#E5E7EB] 
                         text-[#4B5563] pl-3 flex items-center gap-2"
                     >
                       Shop Now{" "}
@@ -123,19 +150,19 @@ const Exploring = () => {
                
                 {/* ------single card */}
                 <div>
-                  <div className="w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
+                  <div className="w-[312px] lg:w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
                     <div className="">
-                      <h2 className="text-[24px] text-[#111827] font-popins font-semibold">
+                      <h2 className="text-[20px] lg:text-[24px] text-[#111827] font-popins font-semibold">
                         For Men's
                       </h2>
-                      <p className="text-[14px] font-popins font-normal">
+                      <p className="text-[12px] lg:text-[14px] font-popins font-normal">
                         Starting at $24
                       </p>
                     </div>
 
                     <Link
                       to={"/"}
-                      className="text-[14px] font-popins font-medium border-l-3 border-[#E5E7EB] 
+                      className="text-[12px] lg:text-[14px] font-popins font-medium border-l-3 border-[#E5E7EB] 
                         text-[#4B5563] pl-3 flex items-center gap-2"
                     >
                       Shop Now{" "}

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import logo from '../assets/images/logo.png'
 import { CiSearch } from "react-icons/ci";
-import { RiUserLine } from "react-icons/ri";
 import { Link } from 'react-router'
+import { RiUserLine } from "react-icons/ri";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import Cart from './Cart';
 
@@ -11,10 +11,12 @@ const NavBar = () => {
 
   const[showCart ,setShowCart] = useState(false);
 
+   
+
   return (
     <>
-    <nav id='navbar' className='py-[27px] z-[1]'>
-          <div className="container ">
+    <nav id='navbar' className='py-[27px] z-[1] hidden lg:block'>
+          <div className="container lg:px-[50px] ">
 
             <div className="flex justify-between items-center">
 
@@ -48,6 +50,9 @@ const NavBar = () => {
           
               <Cart isOpen={showCart}  closeCart={()=>setShowCart(false)}/>
           }
+
+         
+
     </nav>
     </>
   )

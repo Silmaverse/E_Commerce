@@ -4,8 +4,8 @@ import fashion from '../assets/images/fashion.png'
 const Original = () => {
   return (
     <>
-    <section id='original' className='mt-35'>
-         <div className="container  relative">
+    <section id='original' className='mt-35 hidden lg:block'>
+         <div className="container lg:px-[50px]  relative flex flex-wrap lg:block">
             <div className="w-full bg-[#F5F5F5] py-[94px] pl-30 rounded-3xl">
                 <p className='text-xl font-popins font-medium text-[#4B5563]'>100% Original Products</p>
                 <h2 className='w-[362px] text-4xl font-popins font-semibold text-primary mt-[14px]'>The All New Fashion

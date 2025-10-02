@@ -3,11 +3,11 @@
 /* -----banner slider------- */
 
 
-.banner_slider{
+.banner_slider  {
     position: relative;
 }
 
-.banner_slider .slick-dots{
+.banner_slider  .slick-dots{
     display: flex !important;
     gap:12px;
     position: absolute;
@@ -17,7 +17,7 @@
 }
 
 
-.banner_slider .slick-dots li button{
+.banner_slider  .slick-dots li button{
     font-size: 0;
     width:8px;
     height: 8px;
@@ -25,7 +25,7 @@
     border-radius: 50%;
 }
 
-.banner_slider .slick-dots .slick-active button{
+.banner_slider  .slick-dots .slick-active button{
    background-color: #111827;
 }
 
@@ -52,5 +52,30 @@
 }
 
 .exploring .slick-dots .slick-active button{
+   background-color: #111827;
+}
+
+/* ---res nav */
+.navBanner{
+    position: relative;
+}
+
+.resBanner  .slick-dots{
+    display: flex !important;
+    gap: 6px;
+    position: absolute;
+    top:350px;
+}
+
+
+.resBanner  .slick-dots li button{
+    font-size: 0;
+    width:8px;
+    height: 8px;
+    border:1px solid #111827;
+    border-radius: 50%;
+}
+
+.resBanner  .slick-dots .slick-active button{
    background-color: #111827;
 }

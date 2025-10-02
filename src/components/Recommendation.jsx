@@ -15,6 +15,33 @@ const Recommendation = () => {
     slidesToShow: 4,
     slidesToScroll: 2,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1023,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 639,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ],
+   
   };
 
   useEffect(() => {
@@ -32,14 +59,14 @@ const Recommendation = () => {
   return (
     <>
       <section className="mt-[176px]">
-        <div className="container exploring ">
+        <div className="container exploring px-6 lg:px-[50px]">
           <CommonHead
             commonContent1={" Recommendations. "}
             commonContent2={"Best matching products for you"}
           />
           <div className="mt-10">
             <Slider {...settings}>
-              {allProducts.map((item) => (
+              {allProducts.slice(0,13).map((item) => (
                 <div>
                   <CommonProductCard
                     key={item.id}

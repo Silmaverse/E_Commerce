@@ -22,6 +22,32 @@ const Sellers = () => {
     slidesToShow: 4,
     slidesToScroll: 2,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1023,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 639,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
 
@@ -29,12 +55,12 @@ const Sellers = () => {
     <>
 
     <section id='seller' className='mt-[176px] exploring'>
-        <div className="container ">
+        <div className="container px-6 lg:px-[50px]">
             <CommonHead commonContent1={"Best Sellers. "}  commonContent2={"Best selling of the month"}/>
 
             <div className="mt-10">
             <Slider {...settings}>
-              {allProduct.map((item) => (
+              {allProduct.slice(0,13).map((item) => (
                 <div>
                   <CommonProductCard
                     key={item.id}
