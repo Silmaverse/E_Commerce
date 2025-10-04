@@ -4,9 +4,12 @@ import CommonProductCard from "./commoncomponent/CommonProductCard";
 import CommonHead from "./commoncomponent/CommonHead";
 import axios from "axios";
 import Slider from "react-slick";
+import { useNavigate } from "react-router";
 
 const Recommendation = () => {
   const [allProducts, setAllProducts] = useState([]);
+
+  const navigate = useNavigate();
 
   const settings = {
     dots: true,
@@ -55,6 +58,15 @@ const Recommendation = () => {
       });
   }, []);
 
+  // product details handler
+
+  const handleDetails = (productId) =>{
+
+     navigate(`/productdetails/${productId}`)
+  }
+
+
+
   
   return (
     <>
@@ -66,7 +78,7 @@ const Recommendation = () => {
           />
           <div className="mt-10">
             <Slider {...settings}>
-              {allProducts.slice(0,13).map((item) => (
+              {allProducts.map((item) => (
                 <div>
                   <CommonProductCard
                     key={item.id}
@@ -77,6 +89,7 @@ const Recommendation = () => {
                     productDisCountPrice={item.discountPercentage}
                     productRating={item.rating}
                     productStock={item.stock}
+                    detailsClick={()=>handleDetails(item.id)}
                   />
                 </div>
               ))}

@@ -1,49 +1,81 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from "axios";
 import { TiStar } from "react-icons/ti";
 import { IoBagHandleOutline } from "react-icons/io5";
 import Recommendation from '../components/Recommendation';
+import { useParams } from 'react-router';
 
 
 const ProductDetails = () => {
-   
-    const [data ,setData] =useState("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5BhvLE9xu4OK2gz78D7ABC8eKWF-f9ouJug&s");
+
+  const [singleData , setsingleData] = useState("");
+  const [images , setmyImages] =useState([]);
+  const [count , setCount] =useState(1);
+  
+  const paramsDetails = useParams();
+  
+  
+  useEffect(()=>{
+    axios.get(`https://dummyjson.com/products/${paramsDetails.productId}`)
+    .then((res)=>{ setsingleData(res.data) ,setmyImages(res.data.images?.[0])  } )
+    .catch((err)=>{console.log(err)})
+    
+    
+  }, [] )
 
 
-    let myImages =[
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5BhvLE9xu4OK2gz78D7ABC8eKWF-f9ouJug&s',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIMe_wVbGmkhlHBEnTBzj9ZouXWpKz-5EYkw&s',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQTayqXNl2NLci0qfjHir8an3TcRbNc8-R1g&s',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAQvC-MU6ys3JUGvgQ3EOn54le_3EyY3qm0A&s',
+   console.log(singleData)
+ 
+
+  const disPrice = singleData.price - (singleData.price * singleData.discountPercentage/100);
+
+ 
 
 
-    ]
+  
+ 
+
   return (
     <>
       <section id='ProductDetails'>
 
         <div className="container lg:px-[50px]">
-
+           {/* --product row */}
           <div className="productRow flex justify-between">
-            {/* product images */}
-          <div className="producImages flex gap-6">
 
-              <div className="flex flex-col gap-4">
+            {/* product images with loader*/}
+            {
+              singleData?   
+          <div className="producImages flex gap-6">
+            
+               <div className="flex flex-col gap-4">
               {
                 
-                myImages.map((item)=>{
-                  return <button className='w-[140px] h-[158px] rounded-2xl overflow-hidden' onClick={()=>setData(item)}>
+                singleData.images?.map((item ,id)=>(
+                   <button key={id} className='w-[140px] h-[158px] rounded-2xl bg-gray-200 overflow-hidden' onClick={()=>setmyImages(item)} >
                     <img className='w-full rounded-2xl' src={item} alt='error' />
                   </button>
-                })
+                ))
               }
+          </div>
+
+              <div className="w-[640px] h-[678px] rounded-2xl bg-gray-200 ">
+                <img className='w-full rounded-2xl'  src={images} alt='error' />
               </div>
 
-              <div className="w-[640px] h-[678px] rounded-2xl ">
-                <img className='w-full rounded-2xl'  src={data} alt='error' />
+            </div>:
+              <div className="bg-white p-6">
+                <div className="flex gap-6">
+                  <div className="flex flex-col gap-4">
+                    <button className='w-[140px] h-[158px] rounded-2xl bg-gray-200 animate-pulse'></button>
+                    <button className='w-[140px] h-[158px] rounded-2xl bg-gray-200 animate-pulse'></button>
+                    <button className='w-[140px] h-[158px] rounded-2xl bg-gray-200 animate-pulse'></button>
+                  </div>
+                  <div className="w-[640px] h-[678px] rounded-2xl bg-gray-200 animate-pulse"></div>
+                </div>
               </div>
-
-            </div>
-
+            }
+         
 
             {/* product option */}
 
@@ -54,12 +86,12 @@ const ProductDetails = () => {
 
                 <div className="flex gap-[6px] items-start">
                   <TiStar className='text-base text-[#FBBF24]'/>
-                  <p className='text-[12px] lg:text-[16px] font-popins font-medium text-[#4B5563] '> 4.9· 142 reviews </p>
+                  <p className='text-[12px] lg:text-[16px] font-popins font-medium text-[#4B5563] '> {singleData.rating} . {singleData ?.reviews?.length || 0}  reviews  </p>
               
                 </div>
                 <div className="">
-                  <h2 className='font-popins font-semibold text-[24px] text-primary'>$169.99</h2>
-                  <h2 className='font-popins font-medium text-[14px] line-through text-secondary'>$199.99</h2>
+                  <h2 className=' w-[143px] truncate font-popins font-semibold text-[24px] text-primary'>${disPrice}</h2>
+                  <h2 className='font-popins font-medium text-[14px] line-through text-secondary'>${singleData.price}</h2>
                 </div>
 
               </div>
@@ -79,32 +111,36 @@ const ProductDetails = () => {
             <div className="flex justify-between items-center">
               {/* qty button */}
               <div className="w-[110px] h-[40px] rounded-[9999px] bg-[#F8F8F8] flex justify-center items-center gap-4">
-                  <button className='w-[24px] h-[24px] rounded-full bg-[#ffff]'>-</button>
-                  <h2>1</h2>
-                  <button className='w-[24px] h-[24px] rounded-full bg-[#ffff]'>+</button>
+                  <button onClick={()=>{count>1?setCount(count-1):setCount(1)}} className='w-[24px] h-[24px] rounded-full bg-[#ffff]'>-</button>
+                  <h2>{count}</h2>
+                  <button onClick={()=>setCount(count+1)} className='w-[24px] h-[24px] rounded-full bg-[#ffff]'>+</button>
               </div>
               {/* add to cart */}
               <button className='w-[178px] h-[52px] flex items-center justify-center gap-2 rounded-[9999px] font-popins font-medium text-base text-[#ffff] bg-primary'><IoBagHandleOutline /> Add to cart</button>
             </div>
 
+
+           {/* quantity with price */}
             <div className="flex justify-between items-center mt-8 mb-4">
                   <div >
 
-                      <h2 className='font-popins text-base font-normal'>$169.99 x 1</h2>
+                      <h2 className='font-popins text-base font-normal'>${disPrice} x <span>{count}</span></h2>
                       <h2 className='font-popins text-base font-normal'>Tax estimate</h2>
                   </div>
 
                   <div >
 
-                      <h2 className='font-popins text-base font-normal'>$169.99</h2>
+                      <h2 className='w-[100px] truncate  font-popins text-base font-normal'>${disPrice * count} </h2>
                       <h2 className='font-popins text-base font-normal'>$0</h2>
                   </div>
 
             </div>
 
+
+             {/* total price */}
             <div className="border-t border-[#E5E7EB] pt-4 flex justify-between items-center">
                 <h2   className='font-popins font-semibold text-base'>Total</h2>
-                <h2  className='font-popins font-semibold text-base'>$169.99</h2>
+                <h2  className='w-[100px] truncate font-popins font-semibold text-base'>${disPrice * count}</h2>
                 
             </div>
 

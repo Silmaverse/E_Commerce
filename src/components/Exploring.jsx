@@ -83,10 +83,10 @@ const Exploring = () => {
                   <div className="w-[312px] lg:w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
                     <div className="">
                       <h2 className="text-[20px] lg:text-[24px] text-[#111827] font-popins font-semibold">
-                        For Men's
+                       For Women's
                       </h2>
                       <p className="text-[12px] lg:text-[14px] font-popins font-normal">
-                        Starting at $24
+                        Starting at $19
                       </p>
                     </div>
 
@@ -106,10 +106,10 @@ const Exploring = () => {
                   <div className="w-[312px] lg:w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
                     <div className="">
                       <h2 className="text-[20px] lg:text-[24px] text-[#111827] font-popins font-semibold">
-                        For Men's
+                        Accessories
                       </h2>
                       <p className="text-[12px] lg:text-[14px] font-popins font-normal">
-                        Starting at $24
+                       Explore accessories
                       </p>
                     </div>
 
@@ -130,10 +130,10 @@ const Exploring = () => {
                   <div className="w-[312px] lg:w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
                     <div className="">
                       <h2 className="text-[20px] lg:text-[24px] text-[#111827] font-popins font-semibold">
-                        For Men's
+                         For Men's
                       </h2>
                       <p className="text-[12px] lg:text-[14px] font-popins font-normal">
-                        Starting at $24
+                      Starting at $24
                       </p>
                     </div>
 
@@ -153,10 +153,10 @@ const Exploring = () => {
                   <div className="w-[312px] lg:w-[418px]  h-[132px] p-10 border border-[#E5E7EB] rounded-[16px] flex justify-between items-center mt-6">
                     <div className="">
                       <h2 className="text-[20px] lg:text-[24px] text-[#111827] font-popins font-semibold">
-                        For Men's
+                        For Women's
                       </h2>
                       <p className="text-[12px] lg:text-[14px] font-popins font-normal">
-                        Starting at $24
+                       Starting at $19
                       </p>
                     </div>
 

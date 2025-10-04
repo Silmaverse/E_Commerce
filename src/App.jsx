@@ -11,7 +11,7 @@ const App = () => {
     <Route  path='/' element={<LayOutOne/>}>
       <Route  index  element={<Home/>}  />
       <Route path='/checkout' element={<ChekOut/>}/>
-      <Route path='/productdetails' element={<ProductDetails/>}/>
+      <Route path='/productdetails/:productId' element={<ProductDetails/>}/>
     </Route>
 
   ))

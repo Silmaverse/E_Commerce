@@ -6,7 +6,8 @@ import { BiCommentDetail } from "react-icons/bi";
 
 
 
-const CommonProductCard = ({productTitle, productImage , productPrice , productCategory ,  productDisCountPrice , productRating , productStock}) => {
+const CommonProductCard = ({productTitle, productImage , productPrice , productCategory , 
+   productDisCountPrice , productRating , productStock ,detailsClick}) => {
   
   return (
     <>
@@ -16,8 +17,8 @@ const CommonProductCard = ({productTitle, productImage , productPrice , productC
           <button className='bg-white p-2 rounded-full active:scale-[1.1]
            hover:bg-black hover:text-white duration-100'><FaOpencart className='text-2xl hover:text-3xl '/></button>
 
-           <Link to={"/productdetails"} className='bg-white p-2 rounded-full active:scale-[1.1]
-           hover:bg-black hover:text-white duration-100'><BiCommentDetail className='text-2xl hover:text-3xl '/></Link>
+           <button onClick={detailsClick}  className='bg-white p-2 rounded-full active:scale-[1.1]
+           hover:bg-black hover:text-white duration-100'><BiCommentDetail className='text-2xl hover:text-3xl '/></button>
 
         </div>
           {/* -----single card */}

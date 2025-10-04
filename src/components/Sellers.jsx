@@ -60,7 +60,7 @@ const Sellers = () => {
 
             <div className="mt-10">
             <Slider {...settings}>
-              {allProduct.slice(0,13).map((item) => (
+              {allProduct.map((item) => (
                 <div>
                   <CommonProductCard
                     key={item.id}
