@@ -84,8 +84,11 @@ const ProductDetails = () => {
   console.log(allProducts)
   const detailsClick =(productId)=>{
 
-    
     navigate(`/productdetails/${productId}`)
+
+    
+    
+
   }
 
   return (
@@ -323,7 +326,7 @@ const ProductDetails = () => {
                     productDisCountPrice={item.price}
                     productRating={item.rating}
                     productStock={item.stock}
-                    detailsClick={()=>{detailsClick(item.id)}}
+                    detailsClick={()=>{detailsClick(item.id) ,setsingleData(item) ,setmyImages(item.images?.[0])}}
 
 
                   />
