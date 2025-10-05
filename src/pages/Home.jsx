@@ -17,7 +17,7 @@ const Home = () => {
     <Recommendation/>
     <Sellers/>
     <Original/>
-    <Footer/>
+    
     </>
   )
 }

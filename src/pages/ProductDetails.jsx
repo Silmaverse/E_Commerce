@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { TiStar } from "react-icons/ti";
+import { BsStars } from "react-icons/bs";
 import { IoBagHandleOutline } from "react-icons/io5";
 import Recommendation from '../components/Recommendation';
 import { useParams } from 'react-router';
+import CommonProductCard from '../components/commoncomponent/CommonProductCard';
+import CommonHead from '../components/commoncomponent/CommonHead';
 
 
 const ProductDetails = () => {
 
   const [singleData , setsingleData] = useState("");
+  const [allProducts ,setAllProducts] = useState([]);
   const [images , setmyImages] =useState([]);
   const [count , setCount] =useState(1);
   
@@ -18,13 +22,18 @@ const ProductDetails = () => {
   useEffect(()=>{
     axios.get(`https://dummyjson.com/products/${paramsDetails.productId}`)
     .then((res)=>{ setsingleData(res.data) ,setmyImages(res.data.images?.[0])  } )
-    .catch((err)=>{console.log(err)})
+    .catch((err)=>{console.log(err)}),
+
+    axios.get('https://dummyjson.com/products')
+    .then((res)=> setAllProducts(res.data.products))
+    .catch((err)=>console.log(err))
     
     
   }, [] )
 
-
-   console.log(singleData)
+  const sameCategory = allProducts.filter((item)=> item.category == singleData.category)
+  console.log(sameCategory)
+  console.log(singleData)
  
 
   const disPrice = singleData.price - (singleData.price * singleData.discountPercentage/100);
@@ -41,12 +50,12 @@ const ProductDetails = () => {
 
         <div className="container lg:px-[50px]">
            {/* --product row */}
-          <div className="productRow flex justify-between">
+          <div className="productRow flex justify-between ">
 
             {/* product images with loader*/}
             {
               singleData?   
-          <div className="producImages flex gap-6">
+          <div className="producImages flex gap-6 border-b border-[#E5E7EB] pb-[64px]">
             
                <div className="flex flex-col gap-4">
               {
@@ -148,10 +157,75 @@ const ProductDetails = () => {
 
 
           </div>
+
+
+          {/* product info */}
+
+           <div className="productdeatils mb-[96px]">
+
+
+            {/* product details and title */}
+             <h2 className='font-popins font-semibold text-[36px] text-primary mt-[52px] mb-2'>{singleData.title}</h2>
+             <p className='w-[735px] font-popins font-normal text-[16px] text-secondary mb-15'>{singleData.description}</p>
+
+             {/* category and variant */}
+             <h2 className='font-popins font-semibold text-[24px] text-primary mb-2'>{singleData.brand}</h2>
+             <p className='font-popins font-normal text-[16px]'>{singleData.brand}</p>
+             <p className='font-popins font-normal text-[16px]'>Color: Various</p>
+
+             {/* sales and performanc */}
+             <h2 className='font-popins font-semibold text-[24px] text-primary mt-[60px] '>{singleData.availabilityStatus}</h2>
+             <p className='font-popins font-normal text-[16px]'>Sales:{singleData.minimumOrderQuantity}</p>
+             <p className='font-popins font-normal text-[16px]'>Review Count:{singleData?.reviews?.length }</p>
+             <p className='font-popins font-normal text-[16px]'>Review Average: {singleData?.reviews?.length}</p>
+
+
+             {/* keywords */}
+            <h2 className='font-popins font-semibold text-[24px] text-primary mt-[60px] mb-4'>Keywords</h2>
+            <div className="flex gap-2 items-center">
+
+              <div className='px-[14px] py-2 border border-[#E5E7EB] rounded-[9999px]
+              text-secondary font-popins font-normal text-[12px] flex gap-1 justify-center
+              items-center'><BsStars />{singleData.shippingInformation}</div>
+              
+              <div className='px-[14px] py-2 border border-[#E5E7EB] rounded-[9999px]
+              text-secondary font-popins font-normal text-[12px] flex gap-1 justify-center
+              items-center'><BsStars />{singleData.returnPolicy}</div>
+
+              <div className='px-[14px] py-2 border border-[#E5E7EB] rounded-[9999px]
+              text-secondary font-popins font-normal text-[12px] flex gap-1 justify-center
+              items-center'><BsStars />{singleData.warrantyInformation}</div>
+
+                <div className='px-[14px] py-2 border border-[#E5E7EB] rounded-[9999px]
+              text-secondary font-popins font-normal text-[12px] flex gap-1 justify-center
+              items-center'><BsStars />{singleData.weight}</div>
+
+             </div>
+
+
+
+
+           </div>
+           <CommonHead commonContent1={"Recommended products"}  />
+           <div className="flex gap-1 justify-between items-center flex-wrap mt-10">
+
+
+            {
+              sameCategory.map((item)=>(
+                <CommonProductCard productImage={item.thumbnail}
+                productTitle={item.title}
+                productCategory={item.category} 
+                productPrice={item.discountPercentage}
+                productDisCountPrice={item.price}
+                productRating={item.rating}
+                productStock={item.stock}/>
+              ))
+            }
+            </div>
+    
         </div>
 
       </section>
-      <Recommendation/>
     </>
   )
 }
