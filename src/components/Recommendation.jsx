@@ -25,26 +25,25 @@ const Recommendation = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 767,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 639,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
+          slidesToScroll: 1,
+        },
+      },
     ],
-   
   };
 
   useEffect(() => {
@@ -60,14 +59,10 @@ const Recommendation = () => {
 
   // product details handler
 
-  const handleDetails = (productId) =>{
+  const handleDetails = (productId) => {
+    navigate(`/productdetails/${productId}`);
+  };
 
-     navigate(`/productdetails/${productId}`)
-  }
-
-
-
-  
   return (
     <>
       <section className="mt-[176px]">

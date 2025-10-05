@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import CommonHead from './commoncomponent/CommonHead'
+import React, { useEffect, useState } from "react";
+import CommonHead from "./commoncomponent/CommonHead";
 import "slick-carousel/slick/slick.css";
 import Slider from "react-slick";
-import axios from 'axios'
-import CommonProductCard from './commoncomponent/CommonProductCard'
+import axios from "axios";
+import CommonProductCard from "./commoncomponent/CommonProductCard";
 
 const Sellers = () => {
-  const[allProduct ,setallProduct] =useState([])
+  const [allProduct, setallProduct] = useState([]);
 
-
-  useEffect(()=>{
-    axios.get("https://dummyjson.com/products")
-    .then((res)=> setallProduct(res.data.products))
-    .catch((err)=>console.log(err))
-  },[])
+  useEffect(() => {
+    axios
+      .get("https://dummyjson.com/products")
+      .then((res) => setallProduct(res.data.products))
+      .catch((err) => console.log(err));
+  }, []);
 
   const settings = {
     dots: true,
@@ -29,36 +29,37 @@ const Sellers = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 767,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 639,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
-
 
   return (
     <>
-
-    <section id='seller' className='mt-[176px] exploring'>
+      <section id="seller" className="mt-[176px] exploring">
         <div className="container px-6 lg:px-[50px]">
-            <CommonHead commonContent1={"Best Sellers. "}  commonContent2={"Best selling of the month"}/>
+          <CommonHead
+            commonContent1={"Best Sellers. "}
+            commonContent2={"Best selling of the month"}
+          />
 
-            <div className="mt-10">
+          <div className="mt-10">
             <Slider {...settings}>
               {allProduct.map((item) => (
                 <div>
@@ -77,10 +78,9 @@ const Sellers = () => {
             </Slider>
           </div>
         </div>
-
-    </section>
+      </section>
     </>
-  )
-}
+  );
+};
 
-export default Sellers
+export default Sellers;
