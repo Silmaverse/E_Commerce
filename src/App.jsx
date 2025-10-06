@@ -5,6 +5,7 @@ import LayOutOne from './Layouts/LayOutOne'
 import Home from './pages/Home'
 import ChekOut from './pages/ChekOut'
 import ProductDetails from './pages/ProductDetails'
+import LocalStorage from './pages/localStorage'
 
 const App = () => {
   const myRoute =createBrowserRouter(createRoutesFromElements(
@@ -12,6 +13,7 @@ const App = () => {
       <Route  index  element={<Home/>}  />
       <Route path='/checkout' element={<ChekOut/>}/>
       <Route path='/productdetails/:productId' element={<ProductDetails/>}/>
+      <Route path='/localstorage' element={<LocalStorage/>} />
     </Route>
 
   ))

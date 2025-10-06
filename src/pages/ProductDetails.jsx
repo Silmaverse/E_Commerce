@@ -61,6 +61,9 @@ const ProductDetails = () => {
   const paramsDetails = useParams();
 
   useEffect(() => {
+
+     window.scrollTo(0,0)
+
     axios
       .get(`https://dummyjson.com/products/${paramsDetails.productId}`)
       .then((res) => {
@@ -75,18 +78,20 @@ const ProductDetails = () => {
         .catch((err) => console.log(err));
   }, []);
 
+
   const sameCategory = allProducts.filter(
     (item) => item.category == singleData.category
   );
 
   const disPrice =singleData.price - (singleData.price * singleData.discountPercentage) / 100;
 
-  console.log(allProducts)
+  console.log(singleData)
+
   const detailsClick =(productId)=>{
 
     navigate(`/productdetails/${productId}`)
 
-    
+      window.scrollTo({top: 0 ,behavior:"smooth"})
     
 
   }
@@ -326,7 +331,7 @@ const ProductDetails = () => {
                     productDisCountPrice={item.price}
                     productRating={item.rating}
                     productStock={item.stock}
-                    detailsClick={()=>{detailsClick(item.id) ,setsingleData(item) ,setmyImages(item.images?.[0])}}
+                    detailsClick={()=>{detailsClick(item.id) ,setsingleData(item) , setmyImages(item.images?.[0]), window.scrollTo(0,0)}}
 
 
                   />
