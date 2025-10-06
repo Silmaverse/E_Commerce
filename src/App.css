@@ -19,8 +19,8 @@
 
 .banner_slider  .slick-dots li button{
     font-size: 0;
-    width:8px;
-    height: 8px;
+    width:10px;
+    height: 10git px;
     border:1px solid #111827;
     border-radius: 50%;
 }
@@ -44,8 +44,8 @@
 
 .exploring  .slick-dots li button{
     font-size: 0;
-    width:8px;
-    height: 8px;
+    width:10px;
+    height: 10px;
     background: lab(8.32% 1.95 -10.51 / 0.549);
     margin-top: 40px;
     border-radius: 50%;
