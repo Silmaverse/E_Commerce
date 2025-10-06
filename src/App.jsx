@@ -5,7 +5,8 @@ import LayOutOne from './Layouts/LayOutOne'
 import Home from './pages/Home'
 import ChekOut from './pages/ChekOut'
 import ProductDetails from './pages/ProductDetails'
-import LocalStorage from './pages/localStorage'
+import LocalStorage from  "./pages/LocalStorage"
+
 
 const App = () => {
   const myRoute =createBrowserRouter(createRoutesFromElements(
