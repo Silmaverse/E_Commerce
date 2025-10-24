@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React from 'react'
 
 const LocalStorage = () => {
@@ -8,6 +9,12 @@ const LocalStorage = () => {
    localStorage.setItem('index' ,"saving")
    
   }
+
+    const myData = axios.get("https://dummyjson.com/products?limit=15&skip=15&select=title,price")
+  .then((res)=>{console.log(res)})
+  .catch((err)=>console.log(err))
+
+   console.log(myData)
 
 
 

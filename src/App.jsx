@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import ChekOut from './pages/ChekOut'
 import ProductDetails from './pages/ProductDetails'
 import LocalStorage from  "./pages/LocalStorage"
+import Allproduct from './pages/Allproduct'
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <Route  index  element={<Home/>}  />
       <Route path='/checkout' element={<ChekOut/>}/>
       <Route path='/productdetails/:productId' element={<ProductDetails/>}/>
+      <Route path='/all-Product' element={<Allproduct/>} />
       <Route path='/localstorage' element={<LocalStorage/>} />
     </Route>
 

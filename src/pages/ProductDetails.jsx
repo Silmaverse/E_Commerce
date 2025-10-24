@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import { redirect, useNavigate, useParams } from "react-router";
 import CommonProductCard from "../components/commoncomponent/CommonProductCard";
 import CommonHead from "../components/commoncomponent/CommonHead";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 const ProductDetails = () => {
 
@@ -99,9 +100,11 @@ const ProductDetails = () => {
   return (
     <>
       <section id="ProductDetails">
-        <div className="container lg:px-[50px]">
+        <div className="container lg:px-[50px] ">
+        
+        <Breadcrumbs pageName={"Product Details"} pageLink={`/productdetails/${paramsDetails.productId}`} subpageName={singleData.title}/>
           {/* --product row */}
-          <div className="productRow flex justify-between ">
+          <div className="productRow flex justify-between mt-10">
             {/* product images with loader*/}
             {singleData ? (
               <div className="producImages flex gap-6 border-b border-[#E5E7EB] pb-[64px]">
@@ -331,7 +334,8 @@ const ProductDetails = () => {
                     productDisCountPrice={item.price}
                     productRating={item.rating}
                     productStock={item.stock}
-                    detailsClick={()=>{detailsClick(item.id) ,setsingleData(item) , setmyImages(item.images?.[0]), window.scrollTo(0,0)}}
+                    detailsClick={()=>{detailsClick(item.id) ,setsingleData(item) , setmyImages(item.images?.[0]),
+                      window.scrollTo(0,0)}}
 
 
                   />
