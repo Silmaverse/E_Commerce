@@ -7,14 +7,14 @@ import { BiCommentDetail } from "react-icons/bi";
 
 
 const CommonProductCard = ({productTitle, productImage , productPrice , productCategory , 
-   productDisCountPrice , productRating , productStock , detailsClick}) => {
-  
+   productDisCountPrice , productRating , productStock , detailsClick , cartClick }) => {
+   
   return (
     <>
       <div className="w-[312px] lg:w-[309px] h-[448px] relative group overflow-hidden">
 
         <div className="absolute top-4 right-[-40px] flex flex-col gap-3 group-hover:right-4 duration-[.4s]">
-          <button className='bg-white p-2 rounded-full active:scale-[1.1]
+          <button onClick={cartClick} className='bg-white p-2 rounded-full active:scale-[1.1]
            hover:bg-black hover:text-white duration-100'><FaOpencart className='text-2xl hover:text-3xl '/></button>
 
            <button onClick={detailsClick} className='bg-white p-2 rounded-full active:scale-[1.1]
