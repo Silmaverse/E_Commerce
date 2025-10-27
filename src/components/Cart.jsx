@@ -1,9 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import Cookies from 'js-cookie';
 import { Link } from 'react-router'
 import { IoIosClose } from "react-icons/io";
+import CommonCartProduct from './commoncomponent/CommonCartProduct';
+import axios from 'axios';
 
 
 const Cart = ({isOpen ,closeCart}) => {
+  
+    const [products,setProducts]=useState([]);
+    const userid = Cookies.get('userId');
+    console.log(userid)
+
+    useEffect(()=>{
+    if(!userid) return
+       axios.get(`https://dummyjson.com/carts/${userid}`)
+       .then((res)=>( console.log(res),
+        setProducts(res.data)))
+       .catch((err)=>console.log(err))
+    },[userid])
+
 
   useEffect(()=>{
      document.body.style.overflow = isOpen?"hidden":"auto"
@@ -26,41 +42,18 @@ const Cart = ({isOpen ,closeCart}) => {
 
 
              {/* --cart product */}
-            <div className="flex items-center gap-5 mt-5">
-                <div className="w-15 h-15 bg-gray-100 rounded-[5px]"></div>
+             {
+                products.products?.map((item)=>(
 
-                <div className="">
-                    <h2 className='text-lg font-medium text-black font-popins'>Product Name</h2>
-                    <p className='text-[12px] font-medium text-black font-popins'>Product Price</p>
-                </div>
-            </div>
-
-             {/* --cart product */}
-            <div className="flex items-center gap-5 mt-5">
-                <div className="w-15 h-15 bg-gray-100 rounded-[5px]"></div>
-
-                <div className="">
-                    <h2 className='text-lg font-medium text-black font-popins'>Product Name</h2>
-                    <p className='text-[12px] font-medium text-[#4B5563] font-popins'>Product Price</p>
-                </div>
-            </div>
-
-
-             {/* --cart product */}
-            <div className="flex items-center gap-5 mt-5">
-                <div className="w-15 h-15 bg-gray-100 rounded-[5px]"></div>
-
-                <div className="">
-                    <h2 className='text-lg font-medium text-black font-popins'>Product Name</h2>
-                    <p className='text-[12px] font-medium text-[#4B5563] font-popins'>Product Price</p>
-                </div>
-            </div>
-
+                    <CommonCartProduct key={item.id}
+                    cartImg={item.thumbnail} cartTitle={item.title} cartPrice={item.price} />
+                ))
+             }
 
             {/* ------ checkout btn and product sum */}
             <div className="flex justify-between my-4">
                 <p className='text-[14px] font-normal font-popins'  >SubTotal</p>
-                <p className='text-[14px] font-medium font-popins' >$350</p>
+                <p className='text-[14px] font-medium font-popins' >${products.total}</p>
             </div>
 
            <Link onClick={closeCart} to={'/checkout'} className='inline-block w-[270px] lg:w-full py-[14px] bg-[#111827] rounded-[9999px] 

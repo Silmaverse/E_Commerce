@@ -15,7 +15,7 @@ const NavBar = () => {
 
   return (
     <>
-    <nav id='navbar' className='py-[27px] z-[1] hidden lg:block'>
+    <nav id='navbar' className='py-[27px] z-[1] hidden lg:block border-b border-b-[#E5E7EB]'>
           <div className="container lg:px-[50px] ">
 
             <div className="flex justify-between items-center">
@@ -31,7 +31,7 @@ const NavBar = () => {
                 </div>
 
                 <div className="flex items-center gap-[22px]">
-                    <Link to={'/'}>
+                    <Link to={'/register'}>
                         <RiUserLine className='text-3xl text-[#4B5563]'/>
                     </Link>
                     <button onClick={()=>setShowCart(true)} className='relative '>

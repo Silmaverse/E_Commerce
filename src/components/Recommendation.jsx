@@ -6,6 +6,7 @@ import axios from "axios";
 import Slider from "react-slick";
 import { useNavigate } from "react-router";
 import Cookies from 'js-cookie';
+import { Slide, toast, ToastContainer } from "react-toastify";
 
 const Recommendation = () => {
   const [allProducts, setAllProducts] = useState([]);
@@ -64,20 +65,21 @@ const Recommendation = () => {
     navigate(`/productdetails/${productId}`);
   };
 
+  
+  function randomNumber(){
+    
+    let num=Math.floor(Math.random()* 30)+1;
+    return num
+  }
   const productArray =[]
 
-  function randomNumber(){
-
-      let num=Math.floor(Math.random()*16)
-      return num
-  }
-
- Cookies.set('userId', randomNumber(), { expires: 7 })
-
-
-
-
+  
+  
+  Cookies.remove("userId")
+  
   const handleClick =(productId)=>{
+    Cookies.set('userId', randomNumber(), { expires: 7 })
+    
     
 
     const myObject ={
@@ -93,9 +95,21 @@ const Recommendation = () => {
         products:productArray
 
       },{ headers: { 'Content-Type': 'application/json' },}
-    ).then((res)=>console.log(res))
-    .catch((err)=>console.log(err))
+    ).then((res)=>( 
+        console.log(res),
+       toast.success('Cart Added sucessfully', {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar:true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Slide,
+    }) )).catch((err)=>console.log(err))
   }
+  
 
   return (
     <>
@@ -105,6 +119,7 @@ const Recommendation = () => {
             commonContent1={" Recommendations. "}
             commonContent2={"Best matching products for you"}
           />
+           <ToastContainer />
           <div className="mt-10">
             <Slider {...settings}>
               {allProducts.map((item) => (
@@ -120,6 +135,7 @@ const Recommendation = () => {
                     productRating={item.rating}
                     productStock={item.stock}
                     detailsClick={()=>handleDetails(item.id)}
+                   
                   />
                 </div>
               ))}

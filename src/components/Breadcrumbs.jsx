@@ -12,7 +12,7 @@ const Breadcrumbs = ({pageName , pageLink , subpageName ,}) => {
   return (
     <>
 
-    <div className='flex gap-2 items-center'>
+    <div className='flex gap-2 items-center mt-10'>
         <Link to={"/"} className='text-xl font-normal font-popins text-secondary' > <CiHome />
         </Link>
         <span className='text-lg font-normal font-popins text-secondary'>/</span>
