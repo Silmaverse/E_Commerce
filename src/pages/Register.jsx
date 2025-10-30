@@ -1,8 +1,9 @@
 import Password from 'antd/es/input/Password'
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { toast, ToastContainer, Zoom } from 'react-toastify'
+import { PuffLoader} from 'react-spinners'
 
 const Register = () => {
 
@@ -14,9 +15,7 @@ const Register = () => {
     confirmpassword:null,
   })
 
-  const payload={
-     
-  }
+
 
   const [allerrors ,setallerrors] = useState({
     nameerror:"border-[#E5E7EB]",
@@ -24,9 +23,13 @@ const Register = () => {
     confrimpasswordError:"border-[#E5E7EB]",
   })
 
+  const navigate =useNavigate();
+  const[loader ,setloader] =useState(false);
+
   const handleRegister=(e)=>{
 
     console.log("cliking")
+    setloader(true)
     e.preventDefault();
     if(!fromdata.email){
           setallerrors((prev)=>({...prev , nameerror:"border-red-300"}))
@@ -36,23 +39,34 @@ const Register = () => {
           setallerrors((prev)=>({...prev , PasswordError:"border-red-300"}))
     }
     if(!fromdata.confirmpassword){
-          setallerrors((prev)=>({...prev , confrimpasswordError:"border-red-300"}))
+       setTimeout(()=>{
+            setloader(false)
+          },2000);
+        return setallerrors((prev)=>({...prev , confrimpasswordError:"border-red-300"}))
     }
+    
+    setloader(true)
 
-    if(fromdata.password!=fromdata.confirmpassword &&
-         (fromdata.password) && (fromdata.confirmpassword)) 
+    if(fromdata.password!=fromdata.confirmpassword &&(fromdata.password) && (fromdata.confirmpassword)){
+          
          return setallerrors((prev)=>({...prev , PasswordError:"border-red-300",confrimpasswordError:"border-red-300"}))
+      }
+
+
+    
 
     axios.post('https://api.freeapi.app/api/v1/users/register', 
       {
         email:fromdata.email,
         password:fromdata.password,
+        username:fromdata.email.split("@")[0],
         role:"ADMIN",
-        username:"silma",
 
-        })
-    .then((res)=>(
-        toast.success('Register Success', {
+        } )
+    .then((res)=>{
+      console.log(loader)
+      setloader(false)
+      toast.success('Register Success', {
         position: "top-center",
         autoClose: 1000,
         hideProgressBar: true,
@@ -62,10 +76,19 @@ const Register = () => {
         progress: undefined,
         theme: "dark",
         transition: Zoom,
-        }))
+      })
+      
+  
+         setTimeout(() => {
+          navigate('/login')
+         }, 2000);
+     }
+
     )
-    .catch((err)=>    
-    ( toast.error('Register Failed', {
+    .catch((err)=>{
+      console.log(loader)
+      setloader(false)
+      toast.error('Register Failed', {
         position: "top-center",
         autoClose: 1000,
         hideProgressBar: true,
@@ -75,10 +98,16 @@ const Register = () => {
         progress: undefined,
         theme: "dark",
         transition: Zoom,
-     })
-    ))
-    
+      })
+     
 
+    }
+    
+  )
+
+ 
+    
+  console.log(fromdata)
   }
   return (
     <>
@@ -131,11 +160,19 @@ const Register = () => {
 
                </div>
 
-               <button type='submit'  className='w-full mt-6
+               {
+                loader?
+                <div className='w-full mt-6
                 text-white bg-primary h-[52px] text-base font-popins font-medium 
                 rounded-[9999px] flex justify-center items-center'>
-               Continue
+                 <PuffLoader size={50} color='#eaf1ee' />
+                </div>:
+                <button type='submit'  className='w-full mt-6
+                  text-white bg-primary h-[52px] text-base font-popins font-medium 
+                  rounded-[9999px] flex justify-center items-center'>
+                Continue
                </button>
+               }
 
                <div className="w-full flex items-center mt-[32px]">
                    <div className="flex-grow border-t border-[#F3F4F6]"></div>
