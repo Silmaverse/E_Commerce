@@ -45,9 +45,12 @@ const Exploring = () => {
 
   const[products ,setProducts] =useState([]);
 
-  axios.get('https://dummyjson.com/products/categories')
+  axios.get('https://dummyjson.com/products/category-list')
   .then((res)=> setProducts(res.data))
   .catch((err)=>console.log(err))
+
+
+
  
 
   const navigate =useNavigate()
@@ -75,8 +78,8 @@ const Exploring = () => {
 
                   products.map((item)=>{
 
-                    return <CommonExploringCard key={item.id} category={item.name} 
-                     detailClick={ ()=>handleCategory(item.name)} />
+                    return <CommonExploringCard key={item.id} category={item} 
+                     detailClick={ ()=>handleCategory(item)} />
                   })
                   
                 } 

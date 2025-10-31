@@ -10,8 +10,7 @@ const Cart = ({isOpen ,closeCart}) => {
   
     const [products,setProducts]=useState([]);
     const userid = Cookies.get('userId');
-    console.log(userid)
-
+    
     useEffect(()=>{
     if(!userid) return
        axios.get(`https://dummyjson.com/carts/${userid}`)
