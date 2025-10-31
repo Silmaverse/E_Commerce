@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import CommonHead from "./commoncomponent/CommonHead";
 import "slick-carousel/slick/slick.css";
 import Slider from "react-slick";
 import CommonExploringCard from "./commoncomponent/CommonExploringCard";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Exploring = () => {
   const settings = {
@@ -41,6 +43,21 @@ const Exploring = () => {
     
   };
 
+  const[products ,setProducts] =useState([]);
+
+  axios.get('https://dummyjson.com/products/categories')
+  .then((res)=> setProducts(res.data))
+  .catch((err)=>console.log(err))
+ 
+
+  const navigate =useNavigate()
+
+  const handleCategory=(name)=>{
+
+    navigate(`/category/${name}`)
+
+  }
+
   return (
     <>
       <section id="commonhaed" className="exploring mt-[120px] ">
@@ -54,10 +71,16 @@ const Exploring = () => {
             <Slider {...settings}>
          
                 {/* ------single card */}
-              <CommonExploringCard/>
-              <CommonExploringCard/>
-              <CommonExploringCard/>
-              <CommonExploringCard/>
+                 {
+
+                  products.map((item)=>{
+
+                    return <CommonExploringCard key={item.id} category={item.name} 
+                     detailClick={ ()=>handleCategory(item.name)} />
+                  })
+                  
+                } 
+             
              
             </Slider>
           </div>

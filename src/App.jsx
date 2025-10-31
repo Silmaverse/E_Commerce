@@ -9,6 +9,7 @@ import LocalStorage from  "./pages/LocalStorage"
 import Allproduct from './pages/Allproduct'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Category from './pages/Category'
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
       <Route path='/checkout' element={<ChekOut/>}/>
       <Route path='/productdetails/:productId' element={<ProductDetails/>}/>
       <Route path='/all-Product' element={<Allproduct/>} />
+      <Route path='/category/:name' element={<Category/>} />
       <Route path='/localstorage' element={<LocalStorage/>} />
     </Route>
 
